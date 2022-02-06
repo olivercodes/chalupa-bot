@@ -30,7 +30,7 @@ impl EventHandler for Responder {
     /// Here, we just match on the message content and react .
     async fn message(&self, ctx: Context, msg: Message) {
         match msg.content.as_ref() {
-            "!ping" => match Updater::react(&msg.channel_id, &ctx).await {
+            "!chalupa check" => match Updater::react(&msg.channel_id, &ctx).await {
                 Ok(_) => {}
                 Err(err) => println!("{}", err),
             },
@@ -62,7 +62,8 @@ impl Updater {
 
     // TODO - msg passing
     async fn react(channel_id: &ChannelId, ctx: &Context) -> Result<Message> {
-        let msg = channel_id.say(&ctx.http, "pong").await?;
+        let msgContent = "Chalupa web scraper is not yet configured, coming soon.";
+        let msg = channel_id.say(&ctx.http, &msgContent).await?;
         Ok(msg)
     }
 
