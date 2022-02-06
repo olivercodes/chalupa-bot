@@ -97,4 +97,4 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@master
         with:
-          args: 'The image ${{ env.IMAGE_NAME }} has been published. Version ${{ steps.build-and-push.outputs.digest }}' 
+          args: 'The image ${{ env.IMAGE_NAME }} has been published: ghcr.io/olivercodes/chalupa-bot:sha256-${{ steps.build-and-push.outputs.digest }}.sig' 
