@@ -1,5 +1,5 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: chalupa-bot-prod
+namespace: chalupa-bot-prod # TODO this mvoes out to config repo
 resources:
 - deployment.yaml
