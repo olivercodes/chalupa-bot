@@ -9,7 +9,7 @@ on:
   schedule:
     - cron: '42 13 * * *'
   push:
-    branches: [ release-* ]
+    branches: [ feature-* ]
 
 env:
   # Use docker.io for Docker Hub if empty
