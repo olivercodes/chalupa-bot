@@ -8,8 +8,8 @@ name: feature-branch
 on:
   schedule:
     - cron: '42 13 * * *'
-  pull_request:
-    branches: [ main ]
+  push:
+    branches: [ release-* ]
 
 env:
   # Use docker.io for Docker Hub if empty
