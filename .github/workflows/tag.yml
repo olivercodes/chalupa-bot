@@ -8,8 +8,6 @@ name: feature-branch
 on:
   schedule:
     - cron: '42 13 * * *'
-  push:
-    branches: [ feature-* ]
   pull_request:
     branches: [ main ]
 
