@@ -31,7 +31,7 @@ jobs:
           ts=$(date +%s)
           echo "::set-output name=BUILD_ID::${branch}-${sha}-${ts}"
       - name: echo build id
-        id: echo stuff
+        id: echostuff
         run: |
           echo "${{ steps.prep.outputs.BUILD_ID }}"
       
