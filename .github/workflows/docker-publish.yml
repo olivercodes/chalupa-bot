@@ -35,6 +35,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         
+    
+      - name: Generate build ID
+        id: prep
+        run: |
+          branch=${GITHUB_REF##*/}
+          sha=${GITHUB_SHA::8}
+          ts=$(date +%s)
+          echo "::set-output name=BUILD_ID::${branch}-${sha}-${ts}"  
+          
       # selecting a toolchain either by action or manual `rustup` calls should happen
       # before the plugin, as it uses the current rustc version as its cache key
       - uses: actions-rs/toolchain@v1
@@ -74,6 +83,9 @@ jobs:
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=${{ steps.prep.outputs.BUILD_ID }}
+            type=sha
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
