@@ -12,15 +12,15 @@ spec:
   template:
     metadata:
       labels:
-        app: chalupa 
+        app: chalupa
     spec:
       containers:
-      - name: chalupa-bot 
+      - name: chalupa-bot
         image: ghcr.io/olivercodes/chalupa-bot
-        tag: v0.0.0 # {"$imagepolicy": "flux-system:chalupa-bot-prod:tag"}
+        tag: v0.0.2 # {"$imagepolicy": "flux-system:chalupa-bot-prod:tag"}
         env:
-          - name: DISCORD_TOKEN
-            valueFrom:
-              secretKeyRef:
-                name: discord-token
-                key: DISCORD_TOKEN
+        - name: DISCORD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: discord-token
+              key: DISCORD_TOKEN
