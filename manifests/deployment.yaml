@@ -17,7 +17,7 @@ spec:
       containers:
       - name: chalupa-bot 
         image: ghcr.io/olivercodes/chalupa-bot
-        tag: v0.0.0 # {"$imagepolicy": "flux-system:podinfo:tag"}
+        tag: v0.0.0 # {"$imagepolicy": "chalupa-bot-prod:chalupa-bot-prod:tag"}
         env:
           - name: DISCORD_TOKEN
             valueFrom:
