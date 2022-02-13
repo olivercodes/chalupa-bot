@@ -29,7 +29,8 @@ jobs:
           branch=${GITHUB_REF##*/}
           sha=${GITHUB_SHA::8}
           ts=$(date +%s)
-          echo "::set-output name=BUILD_ID::${branch}-${sha}-${ts}"  
+          echo "::set-output name=BUILD_ID::${branch}-${sha}-${ts}"
+          echo ${{ steps.prep.outputs.BUILD_ID }}
       
       - name: Extract branch name
         shell: bash
