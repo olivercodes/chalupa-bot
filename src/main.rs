@@ -63,7 +63,7 @@ impl Updater {
     // TODO - msg passing
     async fn react(channel_id: &ChannelId, ctx: &Context) -> Result<Message> {
         let msg_content = "Chalupa web scraper is not yet configured, coming soon.";
-        let msg = channel_id.say(&ctx.http, &msgContent).await?;
+        let msg = channel_id.say(&ctx.http, &msg_content).await?;
         Ok(msg)
     }
 
