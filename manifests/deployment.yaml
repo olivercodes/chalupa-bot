@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: chalupa-bot
-        image: TO_BE_REPLACED
+        image: ghcr.io/olivercodes/chalupa-bot:TO_BE_REPLACED
         env:
         - name: DISCORD_TOKEN
           valueFrom:
