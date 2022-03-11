@@ -41,7 +41,7 @@ jobs:
           branch=${GITHUB_REF##*/}
           sha=${GITHUB_SHA::8}
           ts=$(date +%s)
-          echo "::set-output name=BUILD_ID::${branch}-${sha}-${ts}"  
+          echo "::set-output name=BUILD_ID::${branch}-${sha}"  
           
       # selecting a toolchain either by action or manual `rustup` calls should happen
       # before the plugin, as it uses the current rustc version as its cache key
@@ -89,7 +89,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=raw,value=release-${{ steps.extract_branch.outputs.branch }}
+            type=raw,value=${{ steps.prep.outputs.BUILD_ID }}
             type=sha
             
       # Build and push Docker image with Buildx (don't push on PR)
