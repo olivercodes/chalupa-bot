@@ -9,8 +9,8 @@ on:
   schedule:
     - cron: '42 13 * * *'
   push:
-    branches: [ release-* ]
     # Publish semver tags as releases.
+    tags: [ 'release-*.*.*' ]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -89,7 +89,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=raw,value=${{ steps.prep.outputs.BUILD_ID }}
+            type=raw,value=${{ github.ref_name }}
             type=sha
             
       # Build and push Docker image with Buildx (don't push on PR)
