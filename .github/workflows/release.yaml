@@ -49,7 +49,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=raw,value=${{ github.ref_name }}
+            type=raw,value=${{ github.ref_name }}-${{ steps.prep.outputs.BUILD_ID }}
             type=sha
             
       - name: Build and push Docker image
