@@ -26,6 +26,6 @@ RUN cargo install --target x86_64-unknown-linux-musl --path .
 
 # Copy the statically-linked binary into a scratch container.
 FROM scratch
-COPY --from=build /usr/local/cargo/bin/chalupa .
+COPY --from=production-build /usr/local/cargo/bin/chalupa .
 USER 1000
 CMD ["./chalupa"]
